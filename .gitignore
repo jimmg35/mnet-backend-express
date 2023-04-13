@@ -1,0 +1,8 @@
+node_modules/
+build/
+/dist
+devDatabase/
+inspect-output/
+src/migration
+wait-for-it/
+src/static

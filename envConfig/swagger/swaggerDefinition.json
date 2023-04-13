@@ -1,0 +1,14 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Exspace API",
+        "version": "1.0.0",
+        "description": "This is a utility service for spatial functionality of Taiwanese administrative regions."
+    },
+    "servers": [
+        {
+            "url": "http://localhost:8080/api",
+            "description": "Development server"
+        }
+    ]
+}
