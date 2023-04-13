@@ -1,0 +1,39 @@
+# docker-compose.yml
+version: '3'
+
+volumes:
+  asterack-backend-dev-postgres:
+
+
+networks:
+  asterack:
+    driver: bridge
+
+services:
+
+  postgres:
+    image: postgis/postgis:14-3.3
+    container_name: asterack-postgres
+    environment:
+      POSTGRES_USER: ${PostgreSQLContext_USERNAME}
+      POSTGRES_PASSWORD: ${PostgreSQLContext_PASSWORD}
+      POSTGRES_DB_NAME: ${PostgreSQLContext_DATABASE}
+      PGDATA: /data/postgres
+    volumes:
+      - ./dev-mount:/docker-entrypoint-initdb.d/
+      - asterack-backend-dev-postgres:/data/postgres
+    ports:
+      - "${PostgreSQLContext_PORT}:5432"
+    networks:
+      - asterack
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: asterack-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PostgreSQLContext_USERNAME}@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: ${PostgreSQLContext_PASSWORD}
+    ports:
+      - "5050:80"
+    networks:
+      - asterack
