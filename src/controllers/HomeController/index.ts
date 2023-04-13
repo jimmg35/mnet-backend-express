@@ -1,13 +1,8 @@
-import { BaseController, EndpointMethodMapping, EndpointMiddlewareMapping } from "../BaseController"
+import { BaseController, EndpointMethodMapping } from "../BaseController"
 import { Request, Response } from 'express'
 import { PostgreSQLContext } from "../../lib/dbcontext"
 import { autoInjectable, inject } from "tsyringe"
 import StatusCodes from 'http-status-codes'
-import { QueryStringStorer } from "../../lib/QueryStringStorer"
-import { encodePassword } from "../../lib/utility/encodePassword"
-import AuthMiddleware from "../../middlewares/authorization"
-import { authMiddleware } from "../../di"
-import { ApiRightEnum } from "../../types/rbac"
 import sha256 from "sha256"
 
 const { OK } = StatusCodes
@@ -23,8 +18,7 @@ export default class HomeController extends BaseController {
   }
 
   constructor(
-    @inject('dbcontext') dbcontext: PostgreSQLContext,
-    @inject('queryStringStorer') queryStringStorer: QueryStringStorer
+    @inject('dbcontext') dbcontext: PostgreSQLContext
   ) {
     super()
     this.dbcontext = dbcontext
