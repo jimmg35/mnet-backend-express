@@ -1,0 +1,51 @@
+[
+    {
+        "id": "General",
+        "name": "一般使用者",
+        "code": "user:general",
+        "apiRights": [
+            "api:user:profile:list",
+            "api:user:profile:edit",
+            "api:user:password:reset"
+        ],
+        "pageRights": [
+            "/"
+        ]
+    },
+    {
+        "id": "Admin",
+        "name": "管理員",
+        "code": "user:admin",
+        "apiRights": [
+            "api:user:list",
+            "api:user:profile:list",
+            "api:user:profile:edit",
+            "api:user:password:reset",
+            "api:role:list",
+            "api:role:profile:list",
+            "api:role:api:edit",
+            "api:role:page:edit"
+        ],
+        "pageRights": [
+            "/"
+        ]
+    },
+    {
+        "id": "Root",
+        "name": "超級管理員",
+        "code": "user:root",
+        "apiRights": [
+            "api:user:list",
+            "api:user:profile:list",
+            "api:user:profile:edit",
+            "api:user:password:reset",
+            "api:role:list",
+            "api:role:profile:list",
+            "api:role:api:edit",
+            "api:role:page:edit"
+        ],
+        "pageRights": [
+            "/"
+        ]
+    }
+]

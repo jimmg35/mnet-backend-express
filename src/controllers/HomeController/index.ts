@@ -26,7 +26,7 @@ export default class HomeController extends BaseController {
 
   public get = async (req: Request, res: Response) => {
     const params_set = { ...req.query }
-    console.log(sha256.x2('userjsdc2023'))
+    console.log(sha256.x2('userjsdc2023www'))
     console.log(sha256.x2('rogerjsdc2023'))
     return res.status(OK).json({
       ...params_set

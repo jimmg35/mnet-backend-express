@@ -1,15 +1,10 @@
 
 import { createConnection, Connection } from "typeorm"
 import { PostgresConnectionOptions } from "typeorm/driver/postgres/PostgresConnectionOptions"
-import { Sourceuri } from "../entity/backup/sourceuri.entity"
-import { Resource } from "../entity/backup/resource.entity"
-import { Backup } from "../entity/backup/backup.entity"
 import { User } from "../entity/credential/user.entity"
-import { ApiRight } from "../entity/credential/apiright.entity"
-import { PageRight } from "../entity/credential/pageright.entity"
 import { Role } from "../entity/credential/role.entity"
-import { Image } from "../entity/backup/image.entity"
-import { ImageMonitor } from "../entity/backup/imagemonitor.entity"
+import { PageRight } from "../entity/credential/pageright.entity"
+import { ApiRight } from "../entity/credential/apiright.entity"
 
 export interface IDbConfig {
   type: string
@@ -62,8 +57,7 @@ export class PostgreSQLContext extends DbContext {
         "password": this.dbConfig.password,
         "database": this.dbConfig.database,
         "entities": [
-          Sourceuri, Resource, Backup, Image, ImageMonitor,
-          User, Role, ApiRight, PageRight
+          User, Role, PageRight, ApiRight
         ],
         "migrations": [
           "./migration/*.js"

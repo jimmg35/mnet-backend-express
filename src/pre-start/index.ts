@@ -3,7 +3,6 @@ import path from 'path'
 import dotenv from 'dotenv'
 import commandLineArgs from 'command-line-args'
 import fs from 'fs'
-import scanImgUrl from "../lib/utility/scanImgUrl"
 
 const initStaticDir = (staticPath: string | undefined) => {
   if (!staticPath) return
@@ -11,10 +10,6 @@ const initStaticDir = (staticPath: string | undefined) => {
   if (!fs.existsSync(staticFilePath)) {
     fs.mkdirSync(staticFilePath)
   }
-  // const aa = '雲森瀑布\n圖片來源：新北市觀光旅遊網\nhttps://newtaipei.travel/content/images/attractions/2185/1024x768_20130829162820.jpg'
-  // const { isImageUrl, imageType } = scanImgUrl(aa)
-  // console.log(isImageUrl)
-  // console.log(imageType)
 }
 
 (() => {
