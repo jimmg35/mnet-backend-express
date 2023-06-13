@@ -12,67 +12,67 @@ export class Apr {
     completiontime: Date;
 
     @Column({ type: 'integer' })
-    transferFloor: number;
+    transferfloor: number;
 
     @Column({ type: 'integer' })
-    unitPrice: number;
+    unitprice: number;
 
     @Column({ type: 'integer' })
-    priceWithoutParking: number;
+    pricewithoutparking: number;
 
     @Column({ type: 'integer' })
-    roomNumber: number;
+    roomnumber: number;
 
     @Column({ type: 'integer' })
-    hallNumber: number;
+    hallnumber: number;
 
     @Column({ type: 'integer' })
-    bathNumber: number;
+    bathnumber: number;
 
     @Column({ type: 'integer' })
-    buildingTransferArea: number;
+    buildingtransferarea: number;
 
     @Column({ type: 'integer' })
-    parkingSpacePrice: number;
+    parkingspaceprice: number;
 
     @Column({ type: 'integer' })
-    parkingSpaceTransferArea: number;
+    parkingspacetransferarea: number;
 
     @Column({ type: 'integer' })
     price: number;
 
     @Column({ type: 'integer' })
-    landAmount: number;
+    landamount: number;
 
     @Column({ type: 'integer' })
-    buildingAmount: number;
+    buildingamount: number;
 
     @Column({ type: 'integer' })
-    parkAmount: number;
+    parkamount: number;
 
     @Column({ type: 'integer' })
-    buildingType: number;
+    buildingtype: number;
 
     @Column({ type: 'integer' })
     floor: number;
 
     @Column({ type: 'integer' })
-    urbanLandUse: number;
+    urbanlanduse: number;
 
     @Column({ type: 'integer' })
-    buildingArea: number;
+    buildingarea: number;
 
     @Column({ type: 'integer' })
-    subBuildingArea: number;
+    subbuildingarea: number;
 
     @Column({ type: 'integer' })
-    belconyArea: number;
+    belconyarea: number;
 
     @Column({ type: 'integer' })
-    landTransferArea: number;
+    landtransferarea: number;
 
     @Column({ type: 'integer' })
-    parkingSpaceType: number;
+    parkingspacetype: number;
 
     @Column({ type: 'geography', spatialFeatureType: 'Point', srid: 4326 })
     coordinate: string;
