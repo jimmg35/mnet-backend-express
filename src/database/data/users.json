@@ -1,0 +1,11 @@
+[
+    {
+        "alias": "系統",
+        "email": "system@gmail.com.tw",
+        "password": "56fc11350c1ba9ef36e229e56ce06763714d78caa0dbdf6241183b437c07b88c",
+        "sex": "sex:system",
+        "roles": [
+            "user:root"
+        ]
+    }
+]
