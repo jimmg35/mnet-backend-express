@@ -5,7 +5,8 @@ import {
   HomeController,
   AuthController,
   UserController,
-  RoleController
+  RoleController,
+  AprController
 } from '../controllers'
 import { IController } from "../controllers/BaseController"
 import { IProcess } from "../processes/BaseProcess"
@@ -30,8 +31,10 @@ const homeController = container.resolve(HomeController)
 const authController = container.resolve(AuthController)
 const userController = container.resolve(UserController)
 const roleController = container.resolve(RoleController)
+const aprController = container.resolve(AprController)
 export const attachedControllers: IController[] = [
-  homeController, authController, userController, roleController
+  homeController, authController, userController, roleController,
+  aprController
 ]
 
 export const attachedProcess: IProcess[] = []

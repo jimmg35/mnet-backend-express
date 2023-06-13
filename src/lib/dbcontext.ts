@@ -5,6 +5,7 @@ import { User } from "../entity/credential/user.entity"
 import { Role } from "../entity/credential/role.entity"
 import { PageRight } from "../entity/credential/pageright.entity"
 import { ApiRight } from "../entity/credential/apiright.entity"
+import { Apr } from "../entity/apr/apr.entity.exclude"
 
 export interface IDbConfig {
   type: string
@@ -57,7 +58,7 @@ export class PostgreSQLContext extends DbContext {
         "password": this.dbConfig.password,
         "database": this.dbConfig.database,
         "entities": [
-          User, Role, PageRight, ApiRight
+          User, Role, PageRight, ApiRight, Apr
         ],
         "migrations": [
           "./migration/*.js"
