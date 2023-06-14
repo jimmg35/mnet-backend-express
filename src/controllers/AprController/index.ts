@@ -47,16 +47,26 @@ export default class AprController extends BaseController {
             WHERE coordinate && ST_MakeEnvelope(119, 20, 122, 25, 4326)
         ) AS features;
       `)
-    // WHERE coordinate && ST_MakeEnvelope(${xmin}, ${ymin}, ${xmax}, ${ymax}, 4326)
-
     return res.status(OK).json(result[0]['result'])
   }
 
   public query = async (req: Request, res: Response) => {
-    const params_set = { ...req.body }
-    return res.status(OK).json({
-      ...params_set
-    })
+    const { geojson, transactionTimeStart, transactionTimeEnd } = { ...req.body } as unknown as {
+      geojson: string; transactionTimeStart: string; transactionTimeEnd: string
+    }
+
+    const repo = this.dbcontext.connection.getRepository(Apr)
+    const result = await repo
+      .query(`
+        SELECT * FROM apr
+        WHERE ST_Intersects(coordinate, ST_GeomFromGeoJSON('${geojson}'))
+        AND transactiontime >= '${transactionTimeStart}'
+        AND transactiontime <= '${transactionTimeEnd}';
+      `)
+
+
+
+    return res.status(OK).json(result)
   }
 
 }
