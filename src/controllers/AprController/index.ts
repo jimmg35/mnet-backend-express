@@ -15,7 +15,8 @@ export default class AprController extends BaseController {
   public dbcontext: PostgreSQLContext
   public endpointMethod: EndpointMethodMapping = {
     "query": "POST",
-    "listByExtent": "GET"
+    "listByExtent": "GET",
+    "getById": "GET"
   }
 
   constructor(
@@ -58,15 +59,28 @@ export default class AprController extends BaseController {
     const repo = this.dbcontext.connection.getRepository(Apr)
     const result = await repo
       .query(`
-        SELECT * FROM apr
+        SELECT id,
+        ST_AsGeoJSON(coordinate)::json AS geometry
+        FROM apr
         WHERE ST_Intersects(coordinate, ST_GeomFromGeoJSON('${geojson}'))
         AND transactiontime >= '${transactionTimeStart}'
         AND transactiontime <= '${transactionTimeEnd}';
       `)
 
-
-
     return res.status(OK).json(result)
+  }
+
+  public getById = async (req: Request, res: Response) => {
+    const { id } = { ...req.query } as unknown as { id: string }
+
+    const repo = this.dbcontext.connection.getRepository(Apr)
+    const aprs = await repo.findOne({
+      where: { id: id }
+    })
+
+    if (!aprs) return res.status(404).json({ status: 'not found' })
+
+    return res.status(OK).json(aprs)
   }
 
 }
