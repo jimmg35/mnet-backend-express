@@ -59,7 +59,7 @@ export default class AprController extends BaseController {
     const repo = this.dbcontext.connection.getRepository(Apr)
     const result = await repo
       .query(`
-        SELECT id,
+        SELECT id, unitprice,
         ST_AsGeoJSON(coordinate)::json AS geometry
         FROM apr
         WHERE ST_Intersects(coordinate, ST_GeomFromGeoJSON('${geojson}'))
